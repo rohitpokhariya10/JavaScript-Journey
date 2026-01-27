@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Like Effect | DAY 43 Homework</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        html,
+        body {
+        height: 100%;
+        width: 100%;
+        }
+        .container{
+            height: 100vh;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            height:400px;
+            width:300px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .box img{
+            height: 100%;
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+            object-position: center;
+        }
+        .box i{
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%) scale(0);
+            font-size: 75px;
+            color: #fff;
+            opacity: 0.8;
+            transition: transform 0.5s ease;
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <img src="https://images.unsplash.com/photo-1763046287602-7f878927101f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+            <i class="ri-heart-3-fill"></i>
+        </div>
+    </div>
+    
+
+
+    <script>
+   let box = document.querySelector(".box");
+let icon = document.querySelector("i");
+
+box.addEventListener("dblclick", function () {
+    icon.style.transform = "translate(-50%, -50%) scale(1)";
+   // console.log("clicked");
+
+
+
+    //800ms ke baad gyb hojyga
+    setTimeout(() => {
+        icon.style.transform = "translate(-50%, -50%) scale(0)";
+    }, 800);
+});
+
+
+    </script>
+</body>
+</html>

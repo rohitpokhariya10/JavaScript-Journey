@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Story Feature</title>
+
+  <style>
+    /* ==============================
+       BASIC RESET + GLOBAL SETTINGS
+    =============================== */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html,body{
+      height:100%;
+      width:100%;
+    }
+
+    /* Main background wrapper */
+    .main{
+      background-color: rgb(20,128,163);
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: Arial, sans-serif;
+    }
+
+    /* The white content card */
+    .card{
+      height:500px;
+      width:300px;
+      background-color:white;
+      border-radius:14px;
+      border:2px solid black;
+      overflow:hidden;
+      position: relative; /* so full-screen overlay stays inside */
+    }
+
+    /* ==============================
+       STORY ROW (Horizontal scroll bar)
+    =============================== */
+    .stories{
+      height:120px;
+      width:100%;
+      display:flex;              /* stories in one row */
+      align-items:center;
+      gap:12px;
+      padding:12px 10px;
+      
+      overflow-x:auto;           /* horizontal scroll enabled */
+      overflow-y:hidden;
+      scroll-behavior:smooth;
+      scrollbar-width:none;      /* hide scrollbar (Firefox) */
+        cursor: pointer;
+    }
+
+    /* hide scrollbar (Chrome) */
+    .stories::-webkit-scrollbar{
+      display:none;
+    }
+
+    /* ==============================
+       EACH STORY CIRCLE
+    =============================== */
+    .story{
+      height:80px;
+      width:80px;
+      border-radius:50%;
+      border:3px solid #ff0066;  /* insta-pink border */
+      flex-shrink:0;             /* prevent shrinking */
+      
+
+      overflow: hidden;          /* important for making image circular */
+    }
+
+    /* Story images styling */
+    .story img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;          /* center crop like Instagram */
+    }
+
+    /* ==============================
+       FULL SCREEN STORY VIEW
+    =============================== */
+    .full-screen{
+          cursor: pointer;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      display: none;             /* hidden by default */
+      top:0;
+      left:0;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="card">
+
+      <!-- The fullscreen story image -->
+      <div class="full-screen"></div>
+
+      <!-- Story scroll bar -->
+      <div class="stories"></div>
+
+    </div>
+  </div>
+
+  <script>
+    /* ==============================
+       STORY DATA ARRAY
+       dp = display picture
+       story = full screen image
+    =============================== */
+    let storiesArr = [
+      { dp: "https://plus.unsplash.com/premium_photo-1760468898979-1a0a410536d2?q=80&w=787&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", story: "https://images.unsplash.com/photo-1501785888041-af3ef285b470" },
+      { dp: "https://plus.unsplash.com/premium_photo-1760468899354-59e0c7d735a7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", story: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" },
+      { dp: "https://plus.unsplash.com/premium_photo-1760468898862-ab3172853206?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", story: "https://images.unsplash.com/photo-1502082553048-f009c37129b9" },
+      { dp: "https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", story:"https://images.unsplash.com/photo-1763321402439-41eb2a0c7e7b?q=80&w=696&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+      { dp: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde", story: "https://images.unsplash.com/photo-1469474968028-56623f02e42e" },
+      { dp: "https://images.unsplash.com/photo-1527980965255-d3b416303d12", story: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e" }
+    ];
+
+    /* Select required DOM elements */
+    let stories = document.querySelector(".stories");
+    let fullScreen = document.querySelector(".full-screen");
+
+    /* ==============================
+       GENERATING STORY CIRCLES
+    =============================== */
+    let clutter = "";
+    storiesArr.forEach(function(elem , idx){
+      clutter += `
+        <div class="story">
+          <!-- each img gets unique ID for click detection -->
+          <img id="${idx}" src="${elem.dp}" alt="user ${idx}"/>
+        </div>`;
+    });
+
+    stories.innerHTML = clutter;
+
+    /* ==============================
+       SHOW STORY ON CLICK
+    =============================== */
+    stories.addEventListener("click", function(dets){
+
+      /* dets.target.id = index of clicked image */
+      fullScreen.style.backgroundImage =
+        console.log(dets.target)
+
+        // target event ki details btata hai & abhi target es code me jis 
+        // story me click krre hai uski details batata hai
+        `url("${storiesArr[dets.target.id].story}")`;
+
+      fullScreen.style.display = "block";
+    });
+
+    /* ==============================
+       CLOSE FULL SCREEN STORY
+    =============================== */
+    fullScreen.addEventListener("click", function () {
+      fullScreen.style.display = "none";
+    });
+
+  </script>
+</body>
+</html>

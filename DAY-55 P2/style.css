@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+body {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  /* this is anchor target element bt default */
+  anchor-name: --target;
+ 
+  overflow: hidden;
+ 
+}
+
+.div{
+  color:white;
+  height:50px;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.anchor{
+    background-color: white;
+  
+    border-radius: 10px;
+    position: absolute;
+    top:anchor(top);
+    left:anchor(left);
+    bottom: anchor(bottom);
+    right:anchor(right);
+    pointer-events: none;
+    position-anchor: --target;
+    transition: all 0.3s linear;
+    mix-blend-mode: difference;
+    pointer-events: none;
+}
+.nav {
+    display: flex;        
+        
+}
+.div:hover{
+      anchor-name: --target;
+   
+}
+
+

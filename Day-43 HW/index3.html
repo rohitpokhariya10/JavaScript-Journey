@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Custom Cursor | DAY 43 Homework</title>
+<style>
+  /* Reset */
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  /* Prevent scrollbars */
+  html,body{
+    height:100%;
+    width:100%;
+    overflow:hidden;     /* hide any overflow */
+  }
+
+  .main{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+  }
+
+  h1{
+    font-size:7em;
+    color:#e6399b;
+    text-shadow:0 2px 8px rgba(230,57,155,0.4),0 0 20px rgba(255,150,200,0.3);
+  }
+
+  
+  .cursor{
+    position:absolute;          /* <-- important */
+    top:0;
+    left:0;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#fff;
+    
+    transform: translate(-50%,-50%);
+    transition: transform 0.08s linear;
+    mix-blend-mode: difference; 
+  }
+
+ 
+
+</style>
+</head>
+<body>
+  <div class="main">
+    <h1>Radha Radha</h1>
+  </div>
+
+  <div class="cursor" id="cursor"></div>
+
+  <script>
+    const crsr = document.getElementById("cursor");
+
+    // Use pointermove (works for touch + mouse)
+    window.addEventListener("pointermove", (e) => {
+      // clientX/Y are viewport coordinates -> perfect for position:fixed
+      const x = e.clientX;
+      const y = e.clientY;
+
+      // use translate so layout doesn't change (no reflow)
+      crsr.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+    });
+
+    // Debug: show/hide cursor when pointer leaves window
+    window.addEventListener("pointerleave", () => crsr.style.opacity = "0");
+    window.addEventListener("pointerenter", () => crsr.style.opacity = "1");
+  </script>
+</body>
+</html>

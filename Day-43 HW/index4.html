@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Multiple Image Hovering Animation| DAY 43 Homework</title>
+
+    <!-- 👇 Beautiful modern font (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: "Poppins", sans-serif;
+       }
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main {
+    height: 100vh;
+    background-color: #111;
+   
+}
+
+/* EACH ROW */
+.elem {
+    height: 120px;
+    width: 100%;                      /* FIXED: 150% removed */
+    border-bottom: 2px solid white;
+
+    display: flex;
+    align-items: center;              /* Proper vertical alignment */
+            
+    position: relative;
+    
+}
+
+/* TEXT */
+.elem h1 {
+    font-size: 8em;
+    font-weight: 600;
+    line-height: 1;                    /* Keeps font tight */
+}
+
+/* CIRCULAR IMAGE */
+.elem img {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0;
+    transition: all linear 0.2s;  /* Smooth hover reveal */
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div id = "elem1" class="elem">
+            <h1>Ferari</h1>
+            <img src="https://images.pexels.com/photos/3954426/pexels-photo-3954426.jpeg" alt="">
+        </div> 
+
+        <div class="elem">
+            <h1>Bike</h1>
+            <img src="https://images.pexels.com/photos/34006/pexels-photo.jpg" alt="">
+        </div>
+
+        <div class="elem">
+            <h1>Dog</h1>
+            <img src="https://images.pexels.com/photos/23383652/pexels-photo-23383652.jpeg" alt="">
+        </div>
+
+        <div class="elem">
+            <h1>Cat</h1>
+            <img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg" alt="">
+        </div>
+    </div>
+
+
+
+    <script>
+          let elem = document.querySelectorAll(".elem");
+
+// NOTE: don't use a single global `img` here — we'll use per-row img inside the loop.
+
+elem.forEach(function(val){
+    //val ke andar sabse pehla <img> element dhoondh lo.
+    // get the image inside this row (robust — not childNodes index)
+    const img = val.querySelector("img");
+
+    // optional debug
+    // console.log("row:", val, "img:", img);
+
+    val.addEventListener("mouseenter", function(){
+        // show this row's image
+        img.style.opacity = 1;
+    });
+
+    val.addEventListener("mouseleave", function(){
+        // hide this row's image
+        img.style.opacity = 0;
+    });
+
+    val.addEventListener("mousemove", function(details){
+        // details is the MouseEvent object
+        // Use clientX/clientY (viewport coords) and convert to coordinates RELATIVE to this row
+        const rect = val.getBoundingClientRect();
+        const x = details.clientX - rect.left; // x relative to row's left
+        const y = details.clientY - rect.top;  // y relative to row's top
+
+        // debug to see values
+        console.log("relative:", x.toFixed(1), y.toFixed(1));
+
+        // place the image so its center is at mouse. Use translate(-50%,-50%) in CSS to center.
+        img.style.left = x + "px";
+        img.style.top  = y + "px";
+    });
+});
+
+        
+        
+    </script>
+</body>
+</html>

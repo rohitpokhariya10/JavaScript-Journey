@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Friend Request | DAY 43 Homework</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        html,
+        body {
+        height: 100%;
+        width: 100%;
+        }
+        .container{
+            height: 100vh;
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height:450px;
+            width:350px;
+            background-color: aliceblue;
+            border-radius: 15px;
+        }
+        img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;   /* perfect circle */
+    object-fit: cover;  
+    object-position: center;
+    margin-bottom: 0.8em;  
+}
+h1{
+    font-size:1.9rem;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-bottom: 0.3em;
+}
+h2 {
+    color: red;
+    font-weight: bold;
+     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 1em;
+}
+/* Buttons - Common Style */
+.btn button {
+    height: 2.8em;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.2s ease;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Hover Effect */
+.btn button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.20);
+}
+
+/* Click Effect */
+.btn button:active {
+    transform: scale(0.92) translateY(1px);
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.20);
+}
+
+
+
+/* --- Add Friend Button --- */
+.btn button:last-child {
+    background: #4CAF50;
+    color: white;
+}
+.btn button:last-child:hover {
+    background: #2e8b57;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="img">
+                <img src="https://i.pinimg.com/736x/a3/db/e2/a3dbe2bf993d51a0897593ffa3c58d0a.jpg" alt="">
+            </div>
+            <h1>Tatiya Bicchu</h1>
+            <h2>Stranger</h2>
+            <div class="btn">
+            
+                <button id="add">Add Friend</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+    <script>
+      let h2 = document.querySelector("h2");
+let btn1 = document.querySelector("#add");
+
+let flag1 = 0;  // friend/stranger toggle
+let flag2 = 0;  // button color toggle
+
+btn1.addEventListener("click", function () {
+
+    if (flag1 === 0) {
+        h2.innerHTML = "Friends";
+        h2.style.color = "green";
+        btn1.innerHTML = "Remove Friend";
+
+        if (flag2 === 0) {
+            btn1.style.backgroundColor = "red";
+            flag2 = 1;
+        }
+
+        flag1 = 1;
+    }
+
+    else {
+        h2.innerHTML = "Stranger";
+        h2.style.color = "red";
+        btn1.innerHTML = "Add Friend";
+        btn1.style.backgroundColor = "green";
+
+        flag2 = 0;
+        flag1 = 0;
+    }
+
+});
+
+   
+       
+
+
+    </script>
+</body>
+</html>

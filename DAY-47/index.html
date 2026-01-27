@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cards from Array</title>
+  <style>
+
+    *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+  html,body{height:100%;
+    width:100;
+    font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial;
+  }
+
+    body{
+      background:#000;
+      color:#222;
+      padding:40px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+     
+    }
+
+    /* Container for cards */
+    .main{
+      height: 100vh;
+      width:100%;
+      max-width:1200px;
+      display:flex;
+      gap:24px;
+      flex-wrap:wrap;            /* allow multiple rows */
+      justify-content:center;    /* center cards horizontally */
+      align-items:flex-start;
+      padding:10px;
+    }
+
+    .card{
+      width:300px;
+      height:400px;
+      background:lightblue;
+      border-radius:14px;
+      padding:28px 22px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      box-shadow:0 12px 30px rgba(0,0,0,0.35);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 30px 60px rgba(0,0,0,0.45);
+    }
+
+    .card img{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      object-fit:cover;
+      margin-bottom:18px;
+      border:6px solid #fff;
+      box-shadow:0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .card h2{
+      font-size:20px;
+      color:#111;
+      margin-bottom:6px;
+      text-align:center;
+      line-height:1.1;
+    }
+    .card h3{
+      font-size:14px;
+      color:#444;
+      margin-bottom:12px;
+      text-align:center;
+      font-weight:600;
+    }
+    .card p{
+      font-size:13px;
+      color:#666;
+      text-align:center;
+      line-height:1.4;
+    }
+
+    /* small screens */
+    @media (max-width:720px){
+      .main{padding:12px; gap:16px}
+      .card{width:100%; max-width:420px}
+    }
+  </style>
+</head>
+<body>
+  <div class="main"></div>
+
+  <script>
+    const data = [
+      {
+        img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop",
+        fullName: "Sarah Johnson",
+        role: "Chief Executive Officer",
+        description: "Visionary leader with 15+ years of experience in tech innovation and business strategy. Passionate about building products that make a difference."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop",
+        fullName: "Michael Chen",
+        role: "Lead Software Engineer",
+        description: "Full-stack developer specializing in scalable architecture and cloud solutions. Loves solving complex problems with elegant code."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80&auto=format&fit=crop",
+        fullName: "Emily Rodriguez",
+        role: "Head of Design",
+        description: "Creative designer with a keen eye for user experience. Believes great design is invisible and focuses on intuitive, beautiful interfaces."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop",
+        fullName: "David Park",
+        role: "Product Manager",
+        description: "Strategic thinker who bridges the gap between technology and user needs. Expert in agile methodologies and product roadmap planning."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80&auto=format&fit=crop",
+        fullName: "Jessica Williams",
+        role: "Marketing Director",
+        description: "Data-driven marketer with expertise in digital campaigns and brand strategy. Thrives on connecting products with the right audiences."
+      },
+      {
+        img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80&auto=format&fit=crop",
+        fullName: "Alex Thompson",
+        role: "DevOps Engineer",
+        description: "Infrastructure specialist focused on automation and reliability. Ensures systems run smoothly with 99.9% uptime."
+      }
+    ];
+
+   
+
+
+   //main ko select islie kra kyunki DATA main class 
+   // me hi tuh render horha hai inspect krke dekhle brosha nhi hai tuh
+    const container = document.querySelector('.main');
+
+    //variable create kra and isko empty string di jo ki yhi dena tha
+    //this is very 👉 important
+    let html = '';
+
+    data.forEach(user => {
+      html += `
+        <article class="card" >
+          <img src="${user.img}" alt="${user.fullName}">
+          <h2>${user.fullName}</h2>
+          <h3>${user.role}</h3>
+          <p>${user.description}</p>
+        </article>
+      `;
+    });
+    
+
+    //👉 esi se main class ka data dynamically change ho rha hai
+    container.innerHTML = html;
+
+
+
+
+
+
+    // alternative approach by making this project using DOM
+    /*
+    container.innerHTML = '';
+    data.forEach(user => {
+      const card = document.createElement('article');
+      card.className = 'card';
+
+      const img = document.createElement('img');
+      img.src = user.img;
+      img.alt = user.fullName;
+
+      const h2 = document.createElement('h2');
+      h2.textContent = user.fullName;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = user.role;
+
+      const p = document.createElement('p');
+      p.textContent = user.description;
+
+      card.append(img,h2,h3,p);
+      container.appendChild(card);
+    });
+    */
+  </script>
+</body>
+</html>
