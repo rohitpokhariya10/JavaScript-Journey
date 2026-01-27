@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I LOVE YOU</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        html,
+        body {
+        height: 100%;
+        width: 100%;
+        }
+
+        .main{
+            /* #eef6ff */
+            background-color: black;
+             overflow: hidden;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+     
+        .btn {
+  background: #e03044;              /* bright theme color */
+  color: #fff;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 14px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  user-select: none;
+   z-index: 6;
+   position: relative;
+  box-shadow: 
+    0 10px 25px rgba(224,48,68,0.4),
+    0 0 0 3px rgba(255,255,255,0.05) inset;
+
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    background 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 20px 35px rgba(224,48,68,0.55),
+    0 0 18px rgba(255,255,255,0.18) inset;
+}
+
+.btn:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow:
+    0 12px 25px rgba(224,48,68,0.45),
+    0 0 5px rgba(255,255,255,0.15) inset;
+}
+
+    </style>
+</head>
+<body>
+     <div class="main">
+        <button class="btn">Click me</button>
+     </div>
+
+
+
+
+
+
+
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+       
+      
+    let main  = document.querySelector(".main");
+    let btn  = document.querySelector(".btn");
+         
+    const arr = [
+      "Main tumse pyaar karta hoon",
+      "Ami tomake bhalobashi",
+      "Nenu ninnu premisthunnanu",
+      "Naan unnai kathalikkiren",
+      "Njan ninne snehikkunnu",
+      "Hu tane prem karu chu",
+      "Mai tainu pyar karda haan",
+      "Me tujhashi prem karto",
+      "Mu tumaku bhala pae",
+      "Nanu ninna preetisuttene",
+      "Hum tohse pyaar karila",
+      "Hum tohra se pyaar kare ni",
+      "Hamar dil tohke chahe la",
+      "Main thoda prem karu chu",
+      "Mai tujhne prem karu chu",
+      "Anbe",
+      "Prem karuchi",
+      "Prem karuni",
+      "Nang na pirayman",
+      "Nga nang phajaba",
+      "Bi nang bu nga ngaina",
+      "Ka nuam lo che",
+      "Nga chemsi",
+      "Khoi nang aai ba",
+      "Ang ni gwswk",
+      "Ebam tuwade nal preet hunda",
+      "Mooji tumka mog korta",
+      "Aanoo ninne ishtam",
+      "Mu tumaku prem kare",
+      "Mai tujhpe fida hu",
+      "Tuj maay lagto",
+      "Hum tuhmai prem karaitani",
+      "Mi tula prem karto"
+    ];
+
+    btn.addEventListener("click", function () {
+        // 1) random index (integer)
+        let a = Math.floor(Math.random() * arr.length);
+
+        // 2) random position
+        let x = Math.floor(Math.random() * 100);
+        let y = Math.floor(Math.random() * 100);
+
+        // 3) random color
+        let c1 = Math.floor(Math.random() * 256);
+        let c2 = Math.floor(Math.random() * 256);
+        let c3 = Math.floor(Math.random() * 256);
+
+        let newEl = document.createElement("h1");
+        newEl.innerHTML = arr[a];
+
+        newEl.style.position = "absolute";
+        newEl.style.left = x + "%";
+        newEl.style.top = y + "%";
+
+        newEl.style.color = `rgb(${c1}, ${c2}, ${c3})`;
+        newEl.style.fontSize = "20px";
+        newEl.style.transform = "scale(1.25)";
+
+        main.appendChild(newEl);
+    });
+
+
+
+
+
+    </script>
+</body>
+</html>

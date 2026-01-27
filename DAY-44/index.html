@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+        html,
+        body {
+        height: 100%;
+        width: 100%;
+        }
+
+        .main{
+            /* #eef6ff */
+            background-color: black;
+             overflow: hidden;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+     
+        .btn {
+  background: #e03044;              /* bright theme color */
+  color: #fff;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 14px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+  user-select: none;
+   z-index: 6;
+   position: relative;
+  box-shadow: 
+    0 10px 25px rgba(224,48,68,0.4),
+    0 0 0 3px rgba(255,255,255,0.05) inset;
+
+  transition: 
+    transform 0.2s ease,
+    box-shadow 0.25s ease,
+    background 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 20px 35px rgba(224,48,68,0.55),
+    0 0 18px rgba(255,255,255,0.18) inset;
+}
+
+.btn:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow:
+    0 12px 25px rgba(224,48,68,0.45),
+    0 0 5px rgba(255,255,255,0.15) inset;
+}
+
+    </style>
+</head>
+<body>
+     <div class="main">
+        <button class="btn">Click me</button>
+     </div>
+
+
+
+
+
+
+
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+       
+        let main  = document.querySelector(".main")
+        let btn  = document.querySelector(".btn")
+
+       
+
+        
+        btn.addEventListener("click",function(){
+                let x = Math.random()*100//random x axis value
+                let y = Math.random()*100//random y axis value
+                let c1 = Math.floor(Math.random()*256)//colour k lie
+                let c2 = Math.floor(Math.random()*256)//colour k lie
+                let c3 = Math.floor(Math.random()*256)//colour k lie
+                let r=  Math.floor(Math.random()*360)//rotate krne ke lie
+
+             let newEl = document.createElement("div")
+            newEl.style.height = "100px"       // bigger heart
+            newEl.style.width = "100px"        // bigger heart
+            newEl.style.transform = "scale(2.5)"//heart thora bda hoke ayga
+            newEl.style.position = "absolute"//isse button uppper hi rhega heart se
+            newEl.style.backgroundColor = `rgb(${c1}, ${c2}, ${c3})`
+            newEl.style.rotate = r + "deg"
+
+            newEl.style.clipPath = "path('M24.5 4.5c-5.523 0-10 4.477-10 10 0 11 14 19 14 19s14-8 14-19c0-5.523-4.477-10-10-10-3.314 0-6.314 1.613-8 4.09C30.814 6.113 27.814 4.5 24.5 4.5z')";
+
+            //  random position me ayga newEl in ui        
+            newEl.style.left = x+"%"//x axis
+            newEl.style.top = y+"%"//y axis
+                
+            console.log(x,y)
+      
+             //ui me ye newEl dikhega isse
+            main.appendChild(newEl)
+    
+        })
+
+
+
+    </script>
+</body>
+</html>

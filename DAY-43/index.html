@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Colour Generator | DAY 43</title>
+    <style>
+
+
+    
+      * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html,
+body {
+height: 100%;
+width: 100%;
+}
+.wrapper{
+     height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        gap: 25px;
+}
+.box{
+    background-color: rgb(20,110,90);
+      height: 400px;
+    width: 400px;
+    border: 6px solid  white;
+    border-radius: 10px;
+
+
+}
+.btn {
+  padding: 12px 24px;
+  background-color: rgb(89,40,100);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+ 
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+</style>
+</head>
+<body>
+    <div class="wrapper">
+    <div class="box">
+   
+    </div>
+    <div class="btn">
+             <button class="btn">Changed!!</button>
+    </div>
+    </div>
+
+
+
+
+    <script src="script.js">
+
+      let box = document.querySelector('.box');
+let btn = document.querySelector('.btn');
+
+btn.addEventListener('click', function () {
+    let c1 = Math.floor(Math.random() * 256);
+    let c2 = Math.floor(Math.random() * 256);
+    let c3 = Math.floor(Math.random() * 256);
+    console.log(c1);
+
+    box.style.backgroundColor = `rgb(${c1} , ${c2} , ${c3})`;
+    box.innerHTML = `rgb(${c1} , ${c2} , ${c3})`;
+
+
+});
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
