@@ -141,12 +141,11 @@
    
 
 
-   //main ko select islie kra kyunki DATA main class 
-   // me hi tuh render horha hai inspect krke dekhle brosha nhi hai tuh
+   //main ko select islie kra kyunki DATA main class me hi tuh render horha hai inspect krke dekhle brosha nhi hai tuh
     const container = document.querySelector('.main');
 
     //variable create kra and isko empty string di jo ki yhi dena tha
-    //this is very 👉 important
+    //this is very  important
     let html = '';
 
     data.forEach(user => {
@@ -161,7 +160,7 @@
     });
     
 
-    //👉 esi se main class ka data dynamically change ho rha hai
+    // esi se main class ka data dynamically change ho rha hai
     container.innerHTML = html;
 
 
