@@ -7,9 +7,18 @@ html,
 body {
 height: 100%;
 width: 100%;
-background-color: rgb(126, 121, 121);
+background: linear-gradient(135deg, #667eea, #764ba2);
+overflow: hidden;
 }
 main{
 height: 100%;
 width: 100%;  
+}
+main img{
+   height: 40px;
+   width: 40px;
+   position: absolute;
+   /* mouse pointer hat jayega icon */
+   cursor: none;
+   
 }
