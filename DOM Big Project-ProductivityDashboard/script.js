@@ -203,7 +203,7 @@ function dailyPlanner() {
   //ye ache se   samajna---->
   let hours = Array.from({ length: 18 }, function (_, idx) {
     // console.log(idx);
-    //ye return krung tabhi niche forEach() se dynamoically dalung
+    //ye return krung tabhi niche forEach() se dynamically dalung
     return (`${6 + idx}:00 - ${7 + idx}:00`)
   });
 
@@ -243,24 +243,32 @@ function dailyPlanner() {
 }
 dailyPlanner()
 
+
+//Motivation Page Start
 function motivationPage() {
-  //Motivation Page Start
+  
   let motivationQuote = document.querySelector(".motivation-2 h1");
   let motivationAuthor = document.querySelector(".motivation-3 h2");
   async function fetchQuote() {
-    let response = await fetch("https://api.quotable.io/random");
+    let response = await fetch("https://motivational-spark-api.vercel.app/api/quotes/random");
 
     let data = await response.json();
     // console.log(data);//ye hai readable data
     //console.log(data.content);
-    motivationQuote.innerHTML = data.content;
+    motivationQuote.innerHTML = data.quote;
     //console.log(data.author);
-    motivationAuthor.innerHTML = data.author
+    motivationAuthor.innerHTML = data.author;
 
   }
   fetchQuote()
 }
 motivationPage();
+
+
+
+
+
+
 
 //Pomodoro Page
 function pomodoroPage() {
@@ -346,6 +354,7 @@ function pomodoroPage() {
 }
 pomodoroPage();
 
+
 // Landing Page
 function landingPage(){
   
@@ -373,11 +382,13 @@ async function weatherApiCall(city) {
 
 // CALL
 weatherApiCall("Dehradun");
+
 function dayTime() {
   const daysOfWeek = [
     "Sunday", "Monday", "Tuesday",
     "Wednesday", "Thursday", "Friday", "Saturday"
   ];
+  
   const months = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
